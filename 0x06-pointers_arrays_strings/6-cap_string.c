@@ -1,38 +1,39 @@
 #include "main.h"
-#include <string.h>
 
 /**
- * cap_string - function to capitalize
- * @s: string to capitalize
- * Return: pointer to string
+ * *cap_string - capitalizes all words of a string
+ * @s: string
+ * Return: resulting string
  */
 
 char *cap_string(char *s)
 {
-	int i = 0;
+	int a, b;
+	int trigger;
+	char nots[] = ",;.!?(){}\n\t\" ";
 
-	while (s[i])
+	for (a = 0, trigger = 0; s[a] != '\0'; a++)
 	{
-		while (!(s[i] >= 'a' && s[i] <= 'z'))
-			i++;
+		if (s[0] > 96 && s[0] < 123)
+			trigger = 1;
+		for (b = 0; nots[b] != '\0'; b++)
+		{
+			if (nots[b] == s[a])
+				trigger = 1;
+		}
 
-		if (s[i - 1] == ' ' ||
-		s[i - 1] == '\t' ||
-		s[i - 1] == '\n' ||
-		s[i - 1] == ',' ||
-		s[i - 1] == ';' ||
-		s[i - 1] == '.' ||
-		s[i - 1] == '!' ||
-		s[i - 1] == '?' ||
-		s[i - 1] == '"' ||
-		s[i - 1] == '(' ||
-		s[i - 1] == ')' ||
-		s[i - 1] == '{' ||
-		s[i - 1] == '}' ||
-		i == 0)
-			s[i] -= 32;
-		i++;
+		if (trigger)
+		{
+			if (s[a] > 96 && s[a] < 123)
+			{
+				s[a] -= 32;
+				trigger = 0;
+			}
+			else if (s[a] > 64 && s[a] < 91)
+				trigger = 0;
+			else if (s[a] > 47 && s[a] < 58)
+				trigger = 0;
+		}
 	}
-
 	return (s);
 }

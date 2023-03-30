@@ -1,30 +1,26 @@
 #include "main.h"
 
 /**
- * leet - test function
- * @s: string to encode
- * Return: pointer to encoded string
+ * *leet - encodes a string
+ * @s: string
+ * Return: resulting encoded string
  */
 
 char *leet(char *s)
 {
-	char letters[] = "aAeEoOtTlL";
-	char numbers[] = "44337071";
-	int i;
-	int j;
+	int a, b;
 
-	for (i = 0; s[i]; i++)
+	char *c = "aAeEoOtTlL";
+	char *d = "4433007711";
+
+	for (a = 0; s[a] != '\0'; a++)
 	{
-		j = 0;
-
-		while (letters[j])
+		for (b = 0; b < 10; b++)
 		{
-			if (s[i] == letters[j])
+			if (s[a] == c[b])
 			{
-				s[i] = numbers[j];
-				break;
+				s[a] = d[b];
 			}
-			j++;
 		}
 	}
 
