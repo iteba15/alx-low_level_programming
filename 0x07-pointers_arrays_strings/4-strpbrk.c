@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * _strpbrk - test function
@@ -11,9 +12,9 @@ char *_strpbrk(char *s, char *accept)
 {
 	for (; *s != '\0'; s++)
 	{
-		for (char *a = accept; *a != '\0'; a++)
+		for (; *accept != '\0'; accept++)
 		{
-			if (*s == *a)
+			if (*s == *accept)
 			{
 				return (s);
 			}
